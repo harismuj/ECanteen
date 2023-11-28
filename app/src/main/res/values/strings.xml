@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">E Canteen</string>
+    <string name="category_image_description">Category Image: Description goes here</string>
 </resources>
