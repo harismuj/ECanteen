@@ -4,137 +4,236 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="20dp"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <!-- Navigation Bar -->
     <!-- Add icons and set onClick listeners for navigation items -->
-    <LinearLayout
-        android:id="@+id/navigationBar"
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/navigationBar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:padding="16dp">-->
+
+<!--        &lt;!&ndash; Example: Home Icon &ndash;&gt;-->
+<!--        <ImageView-->
+<!--            android:id="@+id/iconHome"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:contentDescription="Home"-->
+<!--            android:onClick="onHomeClick"-->
+<!--            android:src="@drawable/ic_home" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/ecanteen"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="14dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:fontFamily="sans-serif-black"-->
+<!--            android:text="E-Canteen"-->
+<!--            android:textSize="16sp" />-->
+
+<!--        &lt;!&ndash; Add more icons for other sections &ndash;&gt;-->
+
+<!--    </LinearLayout>-->
+
+    <TextView
+        android:id="@+id/menu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp">
-
-        <!-- Example: Home Icon -->
-        <ImageView
-            android:id="@+id/iconHome"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="Home"
-            android:onClick="onHomeClick"
-            android:src="@drawable/ic_home" />
-
-        <TextView
-            android:id="@+id/ecanteen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif-black"
-            android:text="E-Canteen"
-            android:textSize="16sp" />
-
-        <!-- Add more icons for other sections -->
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/navigationBar"
+        android:layout_height="228dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:orientation="vertical">
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:text="Menu"
+        android:textSize="34sp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/kategori"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Kategori"
-            android:textStyle="bold" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/menu"
+        android:layout_weight="1">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/categoryRecyclerView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <TextView
-            android:id="@+id/terakhirDibeli"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_weight="1"
-            android:text="Terakhir Dibeli"
-            android:textStyle="bold" />
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_weight="1"
-            app:cardBackgroundColor="#07b067">
+            <TextView
+                android:id="@+id/kategori"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Kategori"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categoryRecyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"></androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/terakhirDibeli"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:text="Terakhir Dibeli"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/imageTerakhir"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:src="@drawable/category" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="#07b067"
+                app:cardCornerRadius="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:padding="15dp">
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/outletTerakhir"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Outlet"
-                        android:textAlignment="center"
-                        android:textColor="#FFFFFF" />
-
-                    <TextView
-                        android:id="@+id/tanggalTerakhir"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                    <ImageView
+                        android:id="@+id/imageTerakhir"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
-                        android:text="Tanggal"
-                        android:textColor="#FFFFFF" />
+                        android:src="@drawable/category" />
 
-                    <TextView
-                        android:id="@+id/itemTerakhir"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="Item"
-                        android:textColor="#FFFFFF" />
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="15dp">
 
-                    <TextView
-                        android:id="@+id/jumlahTerakhir"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:text="Jumlah"
-                        android:textColor="#FFFFFF" />
+                        <TextView
+                            android:id="@+id/outletTerakhir"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Outlet"
+                            android:textAlignment="center"
+                            android:textColor="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/tanggalTerakhir"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:text="Tanggal"
+                            android:textColor="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/itemTerakhir"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:text="Item"
+                            android:textColor="#FFFFFF" />
+
+                        <TextView
+                            android:id="@+id/jumlahTerakhir"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:text="Jumlah"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/outlet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:text="Semua Outlet"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/outletList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scrollbars="vertical" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/category" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/category" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/category" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+        </LinearLayout>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </LinearLayout>

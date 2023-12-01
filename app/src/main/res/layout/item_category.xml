@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="20dp">
 
-    <ImageView
-        android:id="@+id/categoryImage"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_centerInParent="true"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/category"
-        android:contentDescription="@string/category_image_description" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#07AF67"
+        app:cardCornerRadius="50dp">
+
+        <ImageButton
+            android:id="@+id/categoryImage"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="#07AF67"
+            android:contentDescription="@string/category_image_description"
+            android:scaleType="centerCrop"
+            android:src="@drawable/category" />
+    </androidx.cardview.widget.CardView>
 
     <!-- Add other views for category information if needed -->
 

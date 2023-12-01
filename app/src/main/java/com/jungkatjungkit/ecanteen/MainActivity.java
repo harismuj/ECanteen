@@ -2,6 +2,7 @@ package com.jungkatjungkit.ecanteen;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +18,18 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize and display the RecyclerView (category section)
         initCategorySection();
+
+        RecyclerView outletList = findViewById(R.id.outletList);
+        outletList.setLayoutManager(new GridLayoutManager(this, 1));
+
+        // Set a custom span size lookup to make items span two rows
+        ((GridLayoutManager) outletList.getLayoutManager()).setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+            @Override
+            public int getSpanSize(int position) {
+                return 1; // Each item occupies one span (column)
+            }
+        });
+        outletList.setAdapter(new OutletAdapter());
     }
 
     // Example method to initialize and display the category section
