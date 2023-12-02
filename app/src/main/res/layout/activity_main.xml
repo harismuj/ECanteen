@@ -4,54 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="20dp"
     android:orientation="vertical"
+    android:paddingTop="10dp"
     tools:context=".MainActivity">
 
     <!-- Navigation Bar -->
     <!-- Add icons and set onClick listeners for navigation items -->
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/navigationBar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:padding="16dp">-->
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/navigationBar"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:padding="16dp">-->
 
-<!--        &lt;!&ndash; Example: Home Icon &ndash;&gt;-->
-<!--        <ImageView-->
-<!--            android:id="@+id/iconHome"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_marginEnd="16dp"-->
-<!--            android:contentDescription="Home"-->
-<!--            android:onClick="onHomeClick"-->
-<!--            android:src="@drawable/ic_home" />-->
+    <!--        &lt;!&ndash; Example: Home Icon &ndash;&gt;-->
+    <!--        <ImageView-->
+    <!--            android:id="@+id/iconHome"-->
+    <!--            android:layout_width="50dp"-->
+    <!--            android:layout_height="50dp"-->
+    <!--            android:layout_marginEnd="16dp"-->
+    <!--            android:contentDescription="Home"-->
+    <!--            android:onClick="onHomeClick"-->
+    <!--            android:src="@drawable/ic_home" />-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/ecanteen"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="14dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:fontFamily="sans-serif-black"-->
-<!--            android:text="E-Canteen"-->
-<!--            android:textSize="16sp" />-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/ecanteen"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="14dp"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:fontFamily="sans-serif-black"-->
+    <!--            android:text="E-Canteen"-->
+    <!--            android:textSize="16sp" />-->
 
-<!--        &lt;!&ndash; Add more icons for other sections &ndash;&gt;-->
+    <!--        &lt;!&ndash; Add more icons for other sections &ndash;&gt;-->
 
-<!--    </LinearLayout>-->
+    <!--    </LinearLayout>-->
 
-    <TextView
-        android:id="@+id/menu"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="228dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Menu"
-        android:textSize="34sp"
-        android:textStyle="bold" />
+        android:elevation="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/menu"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:text="Menu"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/profil"/>
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -72,6 +88,7 @@
                 android:id="@+id/kategori"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:text="Kategori"
                 android:textSize="18sp"
@@ -80,13 +97,13 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/categoryRecyclerView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="16dp"></androidx.recyclerview.widget.RecyclerView>
+                android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
 
             <TextView
                 android:id="@+id/terakhirDibeli"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:text="Terakhir Dibeli"
@@ -182,7 +199,7 @@
         android:layout_height="70dp"
         android:background="#07AF67"
         android:orientation="horizontal"
-        android:paddingLeft="80dp"
+        android:paddingLeft="85dp"
         android:paddingRight="50dp">
 
         <LinearLayout
@@ -198,7 +215,7 @@
                 android:background="#07AF67"
                 android:contentDescription="Menu Button"
                 android:scaleType="centerCrop"
-                android:src="@drawable/category" />
+                android:src="@drawable/menu" />
 
             <TextView
                 android:id="@+id/menuNavText"
@@ -224,7 +241,7 @@
                 android:background="#07AF67"
                 android:contentDescription="Pesanan Button"
                 android:scaleType="centerCrop"
-                android:src="@drawable/category" />
+                android:src="@drawable/pesanan" />
 
             <TextView
                 android:id="@+id/pesananNavText"
@@ -248,7 +265,7 @@
                 android:background="#07AF67"
                 android:contentDescription="Profil Button"
                 android:scaleType="centerCrop"
-                android:src="@drawable/category" />
+                android:src="@drawable/user" />
 
             <TextView
                 android:id="@+id/profilNavTest"

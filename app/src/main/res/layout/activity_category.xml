@@ -7,7 +7,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoryRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"/>
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
