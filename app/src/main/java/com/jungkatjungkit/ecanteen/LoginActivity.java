@@ -1,9 +1,12 @@
 package com.jungkatjungkit.ecanteen;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.jungkatjungkit.ecanteen.config.ApiResponse;
 import com.jungkatjungkit.ecanteen.config.ApiService;
@@ -31,8 +34,16 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
 
         btnLogin.setOnClickListener(view -> {
+            // Pindahkan pengambilan nilai email dan password ke dalam onClick
             String email = femail.getText().toString();
             String password = fpassword.getText().toString();
+
+            // Cek apakah email dan password sudah diisi
+            if (email.isEmpty() || password.isEmpty()) {
+                // Tampilkan pesan kesalahan jika belum diisi
+                Toast.makeText(LoginActivity.this, "Email dan Password harus diisi", Toast.LENGTH_SHORT).show();
+                return; // Keluar dari onClick jika ada yang belum diisi
+            }
 
             // Buat objek LoginRequest
             LoginRequest loginRequest = new LoginRequest(email, password);
@@ -57,12 +68,22 @@ public class LoginActivity extends AppCompatActivity {
                         // Tanggapan sukses
                         ApiResponse apiResponse = response.body();
                         String message = apiResponse.getMessage();
-                        Log.d("LoginActivity", "Message: " + message);
 
-                        // Handle sesuai kebutuhan Anda
+                        if (message != null && message.equals("login success")) {
+                            // Login berhasil, buka MainActivity
+                            Intent mvMain = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(mvMain);
+                            finish(); // Sebaiknya tutup LoginActivity setelah login berhasil
+                        } else {
+                            // Login gagal, tampilkan pesan kesalahan
+                            Toast.makeText(LoginActivity.this, "Login gagal, cek email dan password", Toast.LENGTH_SHORT).show();
+                        }
+
                     } else {
                         // Tanggapan tidak sukses
                         Log.e("LoginActivity", "Error: " + response.message());
+                        // Tampilkan pesan kesalahan jika respons tidak sukses
+                        Toast.makeText(LoginActivity.this, "Terjadi kesalahan saat login", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -70,6 +91,8 @@ public class LoginActivity extends AppCompatActivity {
                 public void onFailure(Call<ApiResponse> call, Throwable t) {
                     // Gagal melakukan permintaan
                     Log.e("LoginActivity", "Failed to make API call", t);
+                    // Tampilkan pesan kesalahan jika gagal melakukan permintaan
+                    Toast.makeText(LoginActivity.this, "Gagal melakukan login. Periksa koneksi internet Anda", Toast.LENGTH_SHORT).show();
                 }
             });
         });
