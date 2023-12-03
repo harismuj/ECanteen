@@ -187,10 +187,11 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/outletList"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_weight="1"
-                android:scrollbars="vertical" />
+                android:scrollbars="none" />
 
         </LinearLayout>
     </ScrollView>

@@ -1,6 +1,9 @@
 package com.jungkatjungkit.ecanteen;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.PointerIcon;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -15,9 +18,16 @@ import java.util.List;
 
 public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.ViewHolder> {
     private List<OutletData> outletList;
+    private Context context;
 
-    public OutletAdapter(List<OutletData> outletList) {
+    public OutletAdapter(List<OutletData> outletList, Context context) {
         this.outletList = outletList;
+        this.context = context;
+    }
+    public void updateData(List<OutletData> newList) {
+        outletList.clear();
+        outletList.addAll(newList);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -33,6 +43,7 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.ViewHolder
 
         // Update the ViewHolder with the data
         holder.namaOutlet.setText(outletData.getNama_outlet());
+        holder.itemOutlet.setText(String.valueOf(outletData.getJumlah_menu()) + " Menu");
 
         String imageName = outletData.getFoto(); // Assuming "kantin1", "kantin2", etc.
         int imageResId = holder.itemView.getContext().getResources()
@@ -41,6 +52,17 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.ViewHolder
 
         // Set the image resource for the ImageView
         holder.foto.setImageResource(imageResId);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Open the new activity here
+                Intent intent = new Intent(context, OutletActivity.class);
+                // Pass any data to the new activity if needed
+                intent.putExtra("OUTLET_NAME", outletData.getNama_outlet());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -50,11 +72,13 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.ViewHolder
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView namaOutlet;
+        TextView itemOutlet;
         ImageView foto;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             namaOutlet = itemView.findViewById(R.id.outletNameLeft);
+            itemOutlet = itemView.findViewById(R.id.outletItem);
             foto = itemView.findViewById(R.id.outletImageLeft);
         }
     }

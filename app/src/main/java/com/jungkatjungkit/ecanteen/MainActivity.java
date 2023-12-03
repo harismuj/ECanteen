@@ -1,6 +1,8 @@
 package com.jungkatjungkit.ecanteen;
 
 import android.os.Bundle;
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         // Buat objek ApiService menggunakan Retrofit
         getOutlet = retrofit.create(GetOutlet.class);
 
-        outletAdapter = new OutletAdapter(new ArrayList<>());
+        outletAdapter = new OutletAdapter(new ArrayList<>(), this);
 
         outletListRecyclerView = findViewById(R.id.outletList);
         outletListRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
@@ -66,14 +68,16 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<OutletData>> call, Response<List<OutletData>> response) {
                 if (response.isSuccessful()) {
                     List<OutletData> outletList = response.body();
+                    Log.d("MainActivity", "Outlet List Size: " + outletList.size());
 
-                    // Initialize or update the adapter with the new data
-                    outletAdapter = new OutletAdapter(outletList);
-                    outletListRecyclerView.setAdapter(outletAdapter);
+                    // Update the data in the existing adapter
+                    outletAdapter.updateData(outletList);
                 } else {
                     // Handle unsuccessful response
+                    Log.e("MainActivity", "Unsuccessful response: " + response.message());
                 }
             }
+
 
             @Override
             public void onFailure(Call<List<OutletData>> call, Throwable t) {
@@ -81,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 
     // Example method to initialize and display the category section
     private void initCategorySection() {
