@@ -1,9 +1,8 @@
-package com.jungkatjungkit.ecanteen;
+package com.jungkatjungkit.ecanteen.config.outlet;
 
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.PointerIcon;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -12,7 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.jungkatjungkit.ecanteen.config.OutletData;
+import com.jungkatjungkit.ecanteen.OutletActivity;
+import com.jungkatjungkit.ecanteen.R;
 
 import java.util.List;
 
@@ -60,7 +60,6 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.ViewHolder
                 Intent intent = new Intent(context, OutletActivity.class);
                 // Pass any data to the new activity if needed
                 intent.putExtra("OUTLET_ID", outletData.getOutlet_id());
-                intent.putExtra("OUTLET_NAME", outletData.getNama_outlet());
                 context.startActivity(intent);
             }
         });

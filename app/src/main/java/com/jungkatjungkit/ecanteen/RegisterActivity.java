@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.jungkatjungkit.ecanteen.config.ApiResponse;
-import com.jungkatjungkit.ecanteen.config.ApiService;
-import com.jungkatjungkit.ecanteen.config.RegisterRequest;
+import com.jungkatjungkit.ecanteen.config.user.ApiResponse;
+import com.jungkatjungkit.ecanteen.config.user.ApiService;
+import com.jungkatjungkit.ecanteen.config.user.RegisterRequest;
 import com.jungkatjungkit.ecanteen.config.apiURL;
 
 import retrofit2.Call;

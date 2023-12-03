@@ -1,6 +1,6 @@
-package com.jungkatjungkit.ecanteen.config;
+package com.jungkatjungkit.ecanteen.config.user;
 
-import com.jungkatjungkit.ecanteen.config.models.User;
+import com.jungkatjungkit.ecanteen.config.user.User;
 
 import java.util.List;
 

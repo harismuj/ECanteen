@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.jungkatjungkit.ecanteen.config.GetOutlet;
-import com.jungkatjungkit.ecanteen.config.OutletData;
+import com.jungkatjungkit.ecanteen.config.outlet.GetOutlet;
+import com.jungkatjungkit.ecanteen.config.outlet.OutletAdapter;
+import com.jungkatjungkit.ecanteen.config.outlet.OutletData;
 import com.jungkatjungkit.ecanteen.config.apiURL;
 
 import java.util.ArrayList;
