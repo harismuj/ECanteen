@@ -1,4 +1,4 @@
-package com.jungkatjungkit.ecanteen.config;
+package com.jungkatjungkit.ecanteen.config.user;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

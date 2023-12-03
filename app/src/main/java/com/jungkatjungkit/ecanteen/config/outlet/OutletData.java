@@ -1,4 +1,4 @@
-package com.jungkatjungkit.ecanteen.config;
+package com.jungkatjungkit.ecanteen.config.outlet;
 
 public class OutletData {
     private int outlet_id;

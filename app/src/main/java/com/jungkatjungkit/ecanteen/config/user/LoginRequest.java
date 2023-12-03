@@ -1,4 +1,4 @@
-package com.jungkatjungkit.ecanteen.config;
+package com.jungkatjungkit.ecanteen.config.user;
 
 public class LoginRequest {
     private String email;
