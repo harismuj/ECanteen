@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 public class OutletActivity extends AppCompatActivity {
@@ -17,6 +18,8 @@ public class OutletActivity extends AppCompatActivity {
         if (intent != null && intent.hasExtra("OUTLET_ID")) {
             int outletId = intent.getIntExtra("OUTLET_ID", -1);
             String outletName = intent.getStringExtra("OUTLET_NAME");
+            Log.d("OutletActivity", "Outlet ID: " + outletId);
+            Log.d("OutletActivity", "Outlet Name: " + outletName);
 
             TextView outletNameTextView = findViewById(R.id.namaOutlet);
             outletNameTextView.setText(outletName);
