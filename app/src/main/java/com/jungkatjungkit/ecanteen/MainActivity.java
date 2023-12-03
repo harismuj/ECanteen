@@ -22,6 +22,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     private GetOutlet getOutlet;
+    private OutletAdapter outletAdapter;
+    private RecyclerView outletListRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,43 +41,43 @@ public class MainActivity extends AppCompatActivity {
         // Buat objek ApiService menggunakan Retrofit
         getOutlet = retrofit.create(GetOutlet.class);
 
-        fetchData();
+        outletAdapter = new OutletAdapter(new ArrayList<>());
 
-        RecyclerView outletList = findViewById(R.id.outletList);
-        outletList.setLayoutManager(new GridLayoutManager(this, 1));
+        outletListRecyclerView = findViewById(R.id.outletList);
+        outletListRecyclerView.setLayoutManager(new GridLayoutManager(this, 1));
 
         // Set a custom span size lookup to make items span two rows
-        ((GridLayoutManager) outletList.getLayoutManager()).setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+        ((GridLayoutManager) outletListRecyclerView.getLayoutManager()).setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
                 return 1; // Each item occupies one span (column)
             }
         });
-        outletList.setAdapter(new OutletAdapter());
+
+        outletListRecyclerView.setAdapter(outletAdapter);
+        fetchData();
     }
 
     private void fetchData() {
-        // Gunakan objek apiService untuk melakukan panggilan jaringan
-        Call<OutletData> call = getOutlet.getData();
-        call.enqueue(new Callback<OutletData>() {
+        // Use the apiService object to make a network call
+        Call<List<OutletData>> call = getOutlet.getData();
+        call.enqueue(new Callback<List<OutletData>>() {
             @Override
-            public void onResponse(Call<OutletData> call, Response<OutletData> response) {
+            public void onResponse(Call<List<OutletData>> call, Response<List<OutletData>> response) {
                 if (response.isSuccessful()) {
-                    OutletData outletData = response.body();
+                    List<OutletData> outletList = response.body();
 
-                    int outletId = outletData.getOutlet_id();
-                    String namaOutlet = outletData.getNama_outlet();
-                    int jumlahMenu = outletData.getJumlah_menu();
-                    String foto = outletData.getFoto();
-                    // Proses data di sini
+                    // Initialize or update the adapter with the new data
+                    outletAdapter = new OutletAdapter(outletList);
+                    outletListRecyclerView.setAdapter(outletAdapter);
                 } else {
-                    // Tangani kesalahan
+                    // Handle unsuccessful response
                 }
             }
 
             @Override
-            public void onFailure(Call<OutletData> call, Throwable t) {
-                // Tangani kegagalan
+            public void onFailure(Call<List<OutletData>> call, Throwable t) {
+                // Handle network call failure
             }
         });
     }

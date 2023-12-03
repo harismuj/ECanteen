@@ -6,19 +6,55 @@
     android:padding="8dp">
 
     <!-- Your item content for column 1 -->
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="Column 1"/>
 
     <!-- Your item content for column 2 -->
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/outletImageLeft"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/category" />
+
+        <TextView
+            android:id="@+id/outletNameLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Column 1" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="Column 2"/>
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/outletImageRight"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/category" />
+
+        <TextView
+            android:id="@+id/outletNameRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Column 1" />
+
+    </LinearLayout>
 
 </LinearLayout>
