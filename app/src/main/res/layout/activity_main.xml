@@ -181,6 +181,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_weight="1"
                 android:text="Semua Outlet"
+                android:textAlignment="center"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
