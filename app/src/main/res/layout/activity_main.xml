@@ -114,7 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_weight="1"
-                app:cardBackgroundColor="#07b067"
+                app:cardBackgroundColor="@color/red"
                 app:cardCornerRadius="10dp">
 
                 <LinearLayout
@@ -197,7 +197,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="#07AF67"
+        android:background="@color/red"
         android:orientation="horizontal"
         android:paddingLeft="85dp"
         android:paddingRight="50dp">
@@ -212,7 +212,7 @@
                 android:id="@+id/menuNavIcon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="#07AF67"
+                android:background="@color/red"
                 android:contentDescription="Menu Button"
                 android:scaleType="centerCrop"
                 android:src="@drawable/menu" />
@@ -238,7 +238,7 @@
                 android:id="@+id/pesananNavIcon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="#07AF67"
+                android:background="@color/red"
                 android:contentDescription="Pesanan Button"
                 android:scaleType="centerCrop"
                 android:src="@drawable/pesanan" />
@@ -256,14 +256,13 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <ImageButton
                 android:id="@+id/profilNavIcon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="#07AF67"
+                android:background="@color/red"
                 android:contentDescription="Profil Button"
                 android:scaleType="centerCrop"
                 android:src="@drawable/user" />
