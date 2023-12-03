@@ -42,6 +42,9 @@
         app:layout_constraintVertical_bias="0.437" />
 
     <EditText
+        android:paddingLeft="15sp"
+        android:paddingRight="7sp"
+        android:background="@drawable/rounded_editext"
         android:id="@+id/etName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,6 +57,9 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
+        android:paddingLeft="15sp"
+        android:paddingRight="7sp"
+        android:background="@drawable/rounded_editext"
         android:id="@+id/etEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,6 +74,9 @@
         app:layout_constraintTop_toBottomOf="@+id/etName" />
 
     <EditText
+        android:paddingLeft="15sp"
+        android:paddingRight="7sp"
+        android:background="@drawable/rounded_editext"
         android:id="@+id/etPassword1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -80,6 +89,9 @@
         app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
     <EditText
+        android:paddingLeft="15sp"
+        android:paddingRight="7sp"
+        android:background="@drawable/rounded_editext"
         android:id="@+id/etPassword2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
