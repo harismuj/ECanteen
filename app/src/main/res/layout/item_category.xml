@@ -9,7 +9,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="85dp"
         android:layout_height="85dp"
-        app:cardBackgroundColor="#07AF67"
+        app:cardBackgroundColor="@color/red"
         app:cardCornerRadius="20dp">
 
         <ImageButton
@@ -17,7 +17,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
-            android:background="#07AF67"
+            android:background="@color/red"
             android:contentDescription="@string/category_image_description"
             android:scaleType="centerCrop"
             android:src="@drawable/category" />
