@@ -59,6 +59,7 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.ViewHolder
                 // Open the new activity here
                 Intent intent = new Intent(context, OutletActivity.class);
                 // Pass any data to the new activity if needed
+                intent.putExtra("OUTLET_ID", outletData.getOutlet_id());
                 intent.putExtra("OUTLET_NAME", outletData.getNama_outlet());
                 context.startActivity(intent);
             }
