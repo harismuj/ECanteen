@@ -1,17 +1,24 @@
 package com.jungkatjungkit.ecanteen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.jungkatjungkit.ecanteen.config.DateConverter;
 import com.jungkatjungkit.ecanteen.config.outlet.GetOutlet;
 import com.jungkatjungkit.ecanteen.config.outlet.OutletAdapter;
 import com.jungkatjungkit.ecanteen.config.outlet.OutletData;
 import com.jungkatjungkit.ecanteen.config.apiURL;
+import com.jungkatjungkit.ecanteen.config.pesanan.Client;
+import com.jungkatjungkit.ecanteen.config.pesanan.OrderApiService;
+import com.jungkatjungkit.ecanteen.config.pesanan.OrderResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         // Initialize and display the RecyclerView (category section)
         initCategorySection();
@@ -59,6 +68,55 @@ public class MainActivity extends AppCompatActivity {
 
         outletListRecyclerView.setAdapter(outletAdapter);
         fetchData();
+        latestBuy();
+    }
+
+    private void latestBuy() {
+        Intent getEmail = getIntent();
+        String email = getEmail.getStringExtra("KEY_EMAIL");
+        Log.d("MainActivity", "email: " + email);
+
+        OrderApiService orderApiService = Client.getOrderApiService();
+
+        Call<List<OrderResponse>> call = orderApiService.getLatestOrders(email, 1);
+        call.enqueue(new Callback<List<OrderResponse>>() {
+            @Override
+            public void onResponse(Call<List<OrderResponse>> call, Response<List<OrderResponse>> response) {
+                if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
+                    List<OrderResponse> orderResponses = response.body();
+                    OrderResponse firstOrder = orderResponses.get(0);
+
+                    // Now you can work with the first OrderResponse in the list
+                    String fotoOutletName = firstOrder.getFotoOutlet();
+                    int fotoOutletResourceId = getResources().getIdentifier(fotoOutletName, "drawable", getPackageName());
+
+                    ImageView imageTerakhir = findViewById(R.id.imageTerakhir);
+                    TextView outletTerakhir,tanggalTerakhir,itemTerakhir,jumlahTerakhir;
+                    outletTerakhir = findViewById(R.id.outletTerakhir);
+                    tanggalTerakhir = findViewById(R.id.tanggalTerakhir);
+                    itemTerakhir = findViewById(R.id.itemTerakhir);
+                    jumlahTerakhir = findViewById(R.id.jumlahTerakhir);
+
+                    outletTerakhir.setText(firstOrder.getNamaOutlet());
+
+                    tanggalTerakhir.setText(DateConverter.convertDateString(String.valueOf(firstOrder.getTanggalPesanan())));
+                    itemTerakhir.setText(firstOrder.getNamaMenu());
+                    jumlahTerakhir.setText((firstOrder.getJumlahPesanan())+" Pesanan");
+                    imageTerakhir.setImageResource(fotoOutletResourceId);
+                } else {
+                    // Handle unsuccessful response or empty list
+                    Log.e("MainActivity", "Response not successful or empty");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<OrderResponse>> call, Throwable t) {
+                // Handle failure here (e.g., log an error)
+                Log.e("MainActivity", "Request failed: " + t.getMessage());
+            }
+        });
+
+
     }
 
     private void fetchData() {
