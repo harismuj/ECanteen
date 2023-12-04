@@ -50,7 +50,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/menu"
+            android:id="@+id/outletTitle"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginLeft="20dp"
@@ -72,7 +72,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/menu"
+        android:layout_below="@+id/outletTitle"
         android:layout_weight="1">
 
         <LinearLayout
