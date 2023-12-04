@@ -6,8 +6,10 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jungkatjungkit.ecanteen.fragment.HomeFragment;
+import com.jungkatjungkit.ecanteen.fragment.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,45 +23,78 @@ public class MainActivity extends AppCompatActivity {
             Fragment selectedFragment = null;
 
             if (item.getItemId() == R.id.navigation_home) {
-                // menerima data dari loginActivity
+                // Menerima data dari LoginActivity
                 Intent intent = getIntent();
                 String value = intent.getStringExtra("KEY_EMAIL");
 
-                HomeFragment fragment = new HomeFragment();
-                // Membuat Bundle dan menaruh data di dalamnya
-                Bundle bundle = new Bundle();
-                bundle.putString("KEY_EMAIL", value);
-                fragment.setArguments(bundle);
+                // Cek apakah sudah berada di HomeFragment
+                Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 
-                // Kirim data ke HomeFragment
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, fragment)
-                        .commit();
+                if (currentFragment == null || !(currentFragment instanceof HomeFragment)) {
+                    // Jika belum berada di HomeFragment, lakukan transaksi
+                    HomeFragment fragment = new HomeFragment();
+
+                    // Membuat Bundle dan menaruh data di dalamnya
+                    Bundle bundle = new Bundle();
+                    bundle.putString("KEY_EMAIL", value);
+                    fragment.setArguments(bundle);
+
+                    // Kirim data ke HomeFragment
+                    selectedFragment = fragment;
+                } else {
+                    // Jika sudah berada di HomeFragment, tidak perlu lakukan apa-apa
+                    // atau bisa menambahkan log atau pesan jika diperlukan
+                    // Log.d("MainActivity", "Sudah berada di HomeFragment");
+                }
 
             } else if (item.getItemId() == R.id.navigation_order) {
-                // Ganti d
+                // Ganti dengan fragment order jika diperlukan
+                // selectedFragment = new OrderFragment();
 
             } else if (item.getItemId() == R.id.navigation_profile) {
-                // Ganti dengan fragment profile jika diperlukan
+                // Menerima data dari LoginActivity
+                Intent intent = getIntent();
+                String value = intent.getStringExtra("KEY_EMAIL");
+
+                // Cek apakah sudah berada di HomeFragment
+                Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+
+                if (currentFragment == null || !(currentFragment instanceof ProfileFragment)) {
+                    // Jika belum berada di HomeFragment, lakukan transaksi
+                    ProfileFragment fragment = new ProfileFragment();
+
+                    // Membuat Bundle dan menaruh data di dalamnya
+                    Bundle bundle = new Bundle();
+                    bundle.putString("KEY_EMAIL", value);
+                    fragment.setArguments(bundle);
+
+                    // Kirim data ke HomeFragment
+                    selectedFragment = fragment;
+                } else {
+                    // Jika sudah berada di HomeFragment, tidak perlu lakukan apa-apa
+                    // atau bisa menambahkan log atau pesan jika diperlukan
+                    // Log.d("MainActivity", "Sudah berada di HomeFragment");
+                }
 
             } else {
                 return false; // Mengembalikan false jika item tidak dikenali
             }
 
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, selectedFragment)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                    .commit();
+            if (selectedFragment != null) {
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, selectedFragment)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                        .commit();
+            }
 
             return true;
         });
 
-
-
-
         // Set default fragment
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, new HomeFragment())
-                .commit();
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new HomeFragment())
+                    .commit();
+        }
     }
 }
