@@ -2,6 +2,6 @@
     <string name="app_name">E Canteen</string>
     <string name="category_image_description">Category Image: Description goes here</string>
     <string name="welcome_back">Selamat Datang!</string>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

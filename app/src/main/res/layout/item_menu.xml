@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- item_menu.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Add your UI components for menu item here -->
+    <ImageView
+        android:id="@+id/menuImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/category" />
+
+    <TextView
+        android:id="@+id/menuName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Menu Name"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Add more TextViews or UI components as needed -->
+
+</LinearLayout>
