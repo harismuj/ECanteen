@@ -1,4 +1,4 @@
-package com.jungkatjungkit.ecanteen;
+package com.jungkatjungkit.ecanteen.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +15,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.jungkatjungkit.ecanteen.R;
+import com.jungkatjungkit.ecanteen.config.Category;
+import com.jungkatjungkit.ecanteen.config.CategoryAdapter;
 import com.jungkatjungkit.ecanteen.config.DateConverter;
 import com.jungkatjungkit.ecanteen.config.apiURL;
 import com.jungkatjungkit.ecanteen.config.outlet.GetOutlet;

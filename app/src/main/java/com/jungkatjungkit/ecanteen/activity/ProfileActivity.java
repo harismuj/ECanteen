@@ -1,8 +1,10 @@
-package com.jungkatjungkit.ecanteen;
+package com.jungkatjungkit.ecanteen.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.jungkatjungkit.ecanteen.R;
 
 public class ProfileActivity extends AppCompatActivity {
 

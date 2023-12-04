@@ -1,10 +1,12 @@
-package com.jungkatjungkit.ecanteen;
+package com.jungkatjungkit.ecanteen.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.jungkatjungkit.ecanteen.R;
 
 public class SplashActivity extends AppCompatActivity {
 

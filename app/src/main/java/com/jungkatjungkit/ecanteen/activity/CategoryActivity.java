@@ -1,10 +1,15 @@
-package com.jungkatjungkit.ecanteen;
+package com.jungkatjungkit.ecanteen.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import androidx.recyclerview.widget.LinearLayoutManager;
+
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.jungkatjungkit.ecanteen.R;
+import com.jungkatjungkit.ecanteen.config.Category;
+import com.jungkatjungkit.ecanteen.config.CategoryAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 

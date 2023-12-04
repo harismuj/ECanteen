@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.jungkatjungkit.ecanteen.OutletActivity;
+import com.jungkatjungkit.ecanteen.activity.OutletActivity;
 import com.jungkatjungkit.ecanteen.R;
 
 import java.util.List;

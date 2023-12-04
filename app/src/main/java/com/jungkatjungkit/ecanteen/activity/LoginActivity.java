@@ -1,4 +1,4 @@
-package com.jungkatjungkit.ecanteen;
+package com.jungkatjungkit.ecanteen.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.jungkatjungkit.ecanteen.MainActivity;
+import com.jungkatjungkit.ecanteen.R;
 import com.jungkatjungkit.ecanteen.config.user.ApiResponse;
 import com.jungkatjungkit.ecanteen.config.user.ApiService;
 import com.jungkatjungkit.ecanteen.config.user.LoginRequest;

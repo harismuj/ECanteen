@@ -1,4 +1,4 @@
-package com.jungkatjungkit.ecanteen;
+package com.jungkatjungkit.ecanteen.config;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.jungkatjungkit.ecanteen.R;
+
 import java.util.List;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 

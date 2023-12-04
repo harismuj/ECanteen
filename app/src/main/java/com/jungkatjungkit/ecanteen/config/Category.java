@@ -1,4 +1,4 @@
-package com.jungkatjungkit.ecanteen;
+package com.jungkatjungkit.ecanteen.config;
 
 public class Category {
     private int imageResourceId;
