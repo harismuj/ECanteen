@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.jungkatjungkit.ecanteen.R;
@@ -25,7 +26,7 @@ import retrofit2.Callback;
 import retrofit2.HttpException;
 import retrofit2.Response;
 
-public class OutletActivity extends AppCompatActivity implements MenuAdapter.OnMenuClickListener {
+public class OutletActivity extends AppCompatActivity implements MenuAdapter.OnButtonClickListener {
 
     private TextView outletNameTextView;
     private RecyclerView menuRecyclerView;
@@ -41,6 +42,8 @@ public class OutletActivity extends AppCompatActivity implements MenuAdapter.OnM
 
         // Set up RecyclerView for the menu
         menuAdapter = new MenuAdapter(new ArrayList<>(), this);
+        menuAdapter.setOnButtonClickListener(this);
+
         menuRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
 //        menuRecyclerView.setLayoutManager(layoutManager);
@@ -98,8 +101,23 @@ public class OutletActivity extends AppCompatActivity implements MenuAdapter.OnM
     }
 
     @Override
-    public void onMenuClick(MenuResponse menu) {
-        // Handle menu item click if needed
-        // For example, open a new activity or show additional information
+    public void onMinusButtonClick(MenuResponse menu) {
+        // Decrease the quantity when the '-' button is clicked
+        int currentQuantity = menu.getQuantity();
+        if (currentQuantity > 0) {
+            menu.setQuantity(currentQuantity - 1);
+        }
+        // Notify the adapter that the data has changed
+        menuAdapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void onPlusButtonClick(MenuResponse menu) {
+        // Increase the quantity when the '+' button is clicked
+        int currentQuantity = menu.getQuantity();
+        menu.setQuantity(currentQuantity + 1);
+        // Notify the adapter that the data has changed
+        menuAdapter.notifyDataSetChanged();
+    }
+
 }

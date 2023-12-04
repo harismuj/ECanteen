@@ -3,7 +3,8 @@ package com.jungkatjungkit.ecanteen.config.menu;
 import com.google.gson.annotations.SerializedName;
 
 public class MenuResponse {
-
+    @SerializedName("quantity")
+    private int quantity;
     @SerializedName("menu_foto")
     private String menu_foto;
     @SerializedName("harga")
@@ -18,6 +19,14 @@ public class MenuResponse {
     private String namaKategori;
     @SerializedName("outlet_id")
     private int outletId;
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public String getMenu_foto() {
         return menu_foto;

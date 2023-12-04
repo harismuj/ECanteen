@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,10 +20,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
     private List<MenuResponse> menuList;
     private OnMenuClickListener onMenuClickListener;
+    private OnButtonClickListener onButtonClickListener;
 
-    public MenuAdapter(List<MenuResponse> menuList, OnMenuClickListener onMenuClickListener) {
+    public MenuAdapter(List<MenuResponse> menuList, OnButtonClickListener onButtonClickListener) {
         this.menuList = menuList;
-        this.onMenuClickListener = onMenuClickListener;
+        this.onButtonClickListener = onButtonClickListener;
     }
 
     @NonNull
@@ -56,6 +58,30 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
             Log.e("MenuAdapter", "Failed to find drawable resource for: " + imageName);
             holder.foto.setImageResource(R.drawable.category); // Use a default image
         }
+
+        holder.quantity.setText(String.valueOf(menu.getQuantity()));
+
+        holder.btnMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle the click on the '-' button for this specific menu item
+                // You may want to decrement the quantity or perform some other action
+                if (onButtonClickListener != null) {
+                    onButtonClickListener.onMinusButtonClick(menu);
+                }
+            }
+        });
+
+        holder.btnPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle the click on the '+' button for this specific menu item
+                // You may want to increment the quantity or perform some other action
+                if (onButtonClickListener != null) {
+                    onButtonClickListener.onPlusButtonClick(menu);
+                }
+            }
+        });
     }
 
     @Override
@@ -69,12 +95,47 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         TextView harga;
         ImageView foto;
 
+        //quantity
+        TextView quantity;
+        Button btnPlus;
+        Button btnMinus;
+
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             menuName = itemView.findViewById(R.id.menuName);
             menuKategori = itemView.findViewById(R.id.menuKategori);
             harga = itemView.findViewById(R.id.harga);
             foto = itemView.findViewById(R.id.menuImage);
+            quantity = itemView.findViewById(R.id.quantityTextView);
+            btnMinus = itemView.findViewById(R.id.btnMinus);
+            btnPlus = itemView.findViewById(R.id.btnPlus);
+
+            // Set the click listener on the itemView
+            btnMinus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onButtonClickListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            onButtonClickListener.onMinusButtonClick(menuList.get(position));
+                            Log.d("MenuAdapter", "Quantity after minus click: " + menuList.get(position).getQuantity());
+                        }
+                    }
+                }
+            });
+
+            btnPlus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onButtonClickListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            onButtonClickListener.onPlusButtonClick(menuList.get(position));
+                            Log.d("MenuAdapter", "Quantity after plus click: " + menuList.get(position).getQuantity());
+                        }
+                    }
+                }
+            });
 
             // Set the click listener on the itemView
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -93,15 +154,21 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
             });
         }
     }
-
+    public void setOnButtonClickListener(OnButtonClickListener onButtonClickListener) {
+        this.onButtonClickListener = onButtonClickListener;
+    }
     public void updateData(List<MenuResponse> newMenuList) {
         menuList.clear();
         menuList.addAll(newMenuList);
-        Log.d("MenuAdapter", "Menu List Size: " + menuList.size());
         notifyDataSetChanged();
     }
 
     public interface OnMenuClickListener {
         void onMenuClick(MenuResponse menu);
+    }
+
+    public interface OnButtonClickListener {
+        void onMinusButtonClick(MenuResponse menu);
+        void onPlusButtonClick(MenuResponse menu);
     }
 }
