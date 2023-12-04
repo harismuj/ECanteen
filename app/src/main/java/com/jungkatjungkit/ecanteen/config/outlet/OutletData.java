@@ -1,10 +1,10 @@
 package com.jungkatjungkit.ecanteen.config.outlet;
 
 public class OutletData {
-    private int outlet_id;
-    private String nama_outlet;
-    private int jumlah_menu;
-    private String foto;
+    public int outlet_id;
+    public String nama_outlet;
+    public int jumlah_menu;
+    public String foto;
 
     public OutletData() {
         // Empty constructor required by Retrofit

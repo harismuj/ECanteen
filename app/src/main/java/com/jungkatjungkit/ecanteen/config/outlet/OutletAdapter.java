@@ -17,8 +17,8 @@ import com.jungkatjungkit.ecanteen.R;
 import java.util.List;
 
 public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.ViewHolder> {
-    private List<OutletData> outletList;
-    private Context context;
+    public List<OutletData> outletList;
+    public Context context;
 
     public OutletAdapter(List<OutletData> outletList, Context context) {
         this.outletList = outletList;
@@ -71,7 +71,7 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.ViewHolder
         return outletList.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView namaOutlet;
         TextView itemOutlet;
         ImageView foto;
