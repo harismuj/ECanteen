@@ -1,6 +1,7 @@
 package com.jungkatjungkit.ecanteen.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,11 +16,13 @@ import com.jungkatjungkit.ecanteen.config.menu.MenuAdapter;
 import com.jungkatjungkit.ecanteen.config.menu.MenuApiService;
 import com.jungkatjungkit.ecanteen.config.menu.MenuResponse;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.HttpException;
 import retrofit2.Response;
 
 public class OutletActivity extends AppCompatActivity implements MenuAdapter.OnMenuClickListener {
@@ -39,6 +42,9 @@ public class OutletActivity extends AppCompatActivity implements MenuAdapter.OnM
         // Set up RecyclerView for the menu
         menuAdapter = new MenuAdapter(new ArrayList<>(), this);
         menuRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
+//        menuRecyclerView.setLayoutManager(layoutManager);
+
         menuRecyclerView.setAdapter(menuAdapter);
 
         // Retrieve outlet details from Intent
@@ -48,7 +54,9 @@ public class OutletActivity extends AppCompatActivity implements MenuAdapter.OnM
             String outletName = intent.getStringExtra("OUTLET_NAME");
 
             outletNameTextView.setText(outletName);
-            Log.d("outletid", "outletId: " + outletId);
+            Log.d("OutletActivity", "Outlet ID: " + outletId);
+            Log.d("OutletActivity", "Outlet Name: " + outletName);
+
             // Fetch menu data for the specific outlet
             fetchMenuData(outletId);
         }
@@ -61,15 +69,23 @@ public class OutletActivity extends AppCompatActivity implements MenuAdapter.OnM
         call.enqueue(new Callback<List<MenuResponse>>() {
             @Override
             public void onResponse(Call<List<MenuResponse>> call, Response<List<MenuResponse>> response) {
+                Log.d("OutletActivity", "onResponse called");
                 if (response.isSuccessful()) {
                     List<MenuResponse> menuData = response.body();
-                    Log.d("TestLog", "This is a test log");
-                    Log.d("menudata", "Response Body: " + response.body());
                     menuAdapter.updateData(menuData);
-                    Log.d("menudata", "menuData: " + menuData.size());
+                    Log.d("menudata", "menuData: " + menuData);
                 } else {
                     // Handle unsuccessful response
                     Log.e("OutletActivity", "Failed to fetch menu data: " + response.message());
+                    try {
+                        if (response.errorBody() != null) {
+                            Log.e("OutletActivity", "Error response: " + response.errorBody().string());
+                        } else {
+                            Log.e("OutletActivity", "Error response body is null");
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 

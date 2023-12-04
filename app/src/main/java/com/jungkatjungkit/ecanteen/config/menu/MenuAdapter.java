@@ -38,15 +38,24 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
         // Bind data to ViewHolder
         holder.menuName.setText(menu.getNamaMenu());
+        holder.menuKategori.setText(menu.getNamaKategori());
+        holder.harga.setText(String.valueOf("Rp. " + menu.getHarga()));
         Log.d("MenuAdapter", "Menu Name: " + menu.getNamaMenu());
-        Log.d("MenuAdapter", "Foto Name: " + menu.getFoto());
+        Log.d("MenuAdapter", "Foto Name: " + menu.getMenu_foto());
 
-        String imageName = menu.getFoto(); // Assuming "kantin1", "kantin2", etc.
+        String imageName = menu.getMenu_foto(); // Assuming "kantin1", "kantin2", etc.
         int imageResId = holder.itemView.getContext().getResources()
                 .getIdentifier(imageName, "drawable",
                         holder.itemView.getContext().getPackageName());
-        // Set the image resource for the ImageView
-        holder.foto.setImageResource(imageResId);
+
+        if (imageResId != 0) {
+            // Set the image resource for the ImageView
+            holder.foto.setImageResource(imageResId);
+        } else {
+            // Log an error or provide a default image
+            Log.e("MenuAdapter", "Failed to find drawable resource for: " + imageName);
+            holder.foto.setImageResource(R.drawable.category); // Use a default image
+        }
     }
 
     @Override
@@ -56,11 +65,15 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView menuName;
+        TextView menuKategori;
+        TextView harga;
         ImageView foto;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             menuName = itemView.findViewById(R.id.menuName);
+            menuKategori = itemView.findViewById(R.id.menuKategori);
+            harga = itemView.findViewById(R.id.harga);
             foto = itemView.findViewById(R.id.menuImage);
 
             // Set the click listener on the itemView
@@ -84,6 +97,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     public void updateData(List<MenuResponse> newMenuList) {
         menuList.clear();
         menuList.addAll(newMenuList);
+        Log.d("MenuAdapter", "Menu List Size: " + menuList.size());
         notifyDataSetChanged();
     }
 

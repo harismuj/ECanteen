@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class MenuResponse {
 
-    @SerializedName("foto")
-    private String foto;
+    @SerializedName("menu_foto")
+    private String menu_foto;
     @SerializedName("harga")
     private int harga;
     @SerializedName("kategori_id")
@@ -13,12 +13,14 @@ public class MenuResponse {
     @SerializedName("menu_id")
     private int menuId;
     @SerializedName("nama_menu")
-    private int namaMenu;
+    private String namaMenu;
+    @SerializedName("nama_kategori")
+    private String namaKategori;
     @SerializedName("outlet_id")
     private int outletId;
 
-    public String getFoto() {
-        return foto;
+    public String getMenu_foto() {
+        return menu_foto;
     }
 
     public int getHarga() {
@@ -33,8 +35,11 @@ public class MenuResponse {
         return menuId;
     }
 
-    public int getNamaMenu() {
+    public String getNamaMenu() {
         return namaMenu;
+    }
+    public String getNamaKategori() {
+        return namaKategori;
     }
 
     public int getOutletId() {

@@ -9,7 +9,5 @@ import retrofit2.http.Path;
 public interface MenuApiService {
 
     @GET("api/menu/outlet/{outlet_id}")
-    Call<List<MenuResponse>> getMenu(
-            @Path("outlet_id") int outletId
-    );
+    Call<List<MenuResponse>> getMenu(@Path("outlet_id") int outletId);
 }
