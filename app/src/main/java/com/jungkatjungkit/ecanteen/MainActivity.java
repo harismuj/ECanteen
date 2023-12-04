@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
             Fragment selectedFragment = null;
 
             if (item.getItemId() == R.id.navigation_home) {
-                // Dalam sebuah aktivitas
+                // menerima data dari loginActivity
                 Intent intent = getIntent();
                 String value = intent.getStringExtra("KEY_EMAIL");
 
@@ -36,8 +36,9 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.fragment_container, fragment)
                         .commit();
-            } else if (item.getItemId() == R.id.navigation_dashboard) {
-                // Ganti dengan fragment dashboard jika diperlukan
+
+            } else if (item.getItemId() == R.id.navigation_order) {
+                // Ganti d
 
             } else if (item.getItemId() == R.id.navigation_profile) {
                 // Ganti dengan fragment profile jika diperlukan

@@ -112,9 +112,8 @@ public class HomeFragment extends Fragment {
     private void latestBuy(View view) {
 
         OrderApiService orderApiService = Client.getOrderApiService();
-
-        Intent intent = getActivity().getIntent();
         // Mendapatkan data dari Intent
+        Intent intent = getActivity().getIntent();
         String email = intent.getStringExtra("KEY_EMAIL");
 
             Log.d("HomeFragment", "email: " + email);

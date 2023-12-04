@@ -6,7 +6,7 @@
         android:icon="@drawable/baseline_home_24"/>
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_order"
         android:title="Pesanan"
         android:icon="@drawable/baseline_shopping_cart_24"/>
 
