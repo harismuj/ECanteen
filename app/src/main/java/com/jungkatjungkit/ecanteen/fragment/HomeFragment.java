@@ -114,11 +114,11 @@ public class HomeFragment extends Fragment{
 
     private void latestBuy(View view) {
 
-        OrderApiService orderApiService = Client.getOrderApiService();
+
         // Mendapatkan data dari Intent
         Intent intent = getActivity().getIntent();
         String email = intent.getStringExtra("KEY_EMAIL");
-
+        OrderApiService orderApiService = Client.getOrderApiService();
             Log.d("HomeFragment", "email: " + email);
             Call<List<OrderResponse>> call = orderApiService.getLatestOrders(email, 1);
             call.enqueue(new Callback<List<OrderResponse>>() {
@@ -146,7 +146,6 @@ public class HomeFragment extends Fragment{
                         imageTerakhir.setVisibility(View.VISIBLE);
 
                         outletTerakhir.setText(firstOrder.getNamaOutlet());
-
                         tanggalTerakhir.setText(DateConverter.convertDateString(String.valueOf(firstOrder.getTanggalPesanan())));
                         itemTerakhir.setText(firstOrder.getNamaMenu());
                         jumlahTerakhir.setText((firstOrder.getJumlahPesanan()) + " Pesanan");

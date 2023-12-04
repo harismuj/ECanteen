@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             Fragment selectedFragment = null;
-
+            Intent intent = getIntent();
             if (item.getItemId() == R.id.navigation_home) {
                 // Menerima data dari LoginActivity
-                Intent intent = getIntent();
+
                 String value = intent.getStringExtra("KEY_EMAIL");
 
                 // Cek apakah sudah berada di HomeFragment
@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
             } else if (item.getItemId() == R.id.navigation_profile) {
                 // Menerima data dari LoginActivity
-                Intent intent = getIntent();
                 String value = intent.getStringExtra("KEY_EMAIL");
 
                 // Cek apakah sudah berada di HomeFragment
