@@ -13,4 +13,9 @@ public interface OrderApiService {
             @Path("email") String email,
             @Path("limit") int limit
     );
+    @GET("api/order/latest/{email}/s/{status}")
+    Call<List<OrderResponse>> getLatestOrderByStatus(
+            @Path("email") String email,
+            @Path("status") int limit
+    );
 }

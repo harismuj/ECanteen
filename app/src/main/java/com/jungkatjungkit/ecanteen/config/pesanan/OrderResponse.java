@@ -16,15 +16,19 @@ public class OrderResponse {
     private String tanggalPesanan;
     @SerializedName("nama_menu")
     private String namaMenu;
-    @SerializedName("jumlah_pesanan")
-    private int jumlahPesanan;
+    @SerializedName("pesanan")
+    private String pesanan;
+    @SerializedName("total")
+    private int total;
+
+    public int getTotal() { return total; }
 
     public String getTanggalPesanan() {
         return tanggalPesanan;
     }
 
-    public int getJumlahPesanan() {
-        return jumlahPesanan;
+    public String pesanan() {
+        return pesanan;
     }
 
     public String getNamaMenu() {

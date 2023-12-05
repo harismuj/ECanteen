@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:padding="8dp">
 
@@ -16,14 +17,15 @@
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            app:cardCornerRadius="8dp">
 
             <ImageView
                 android:id="@+id/outletImageLeft"
-                android:layout_width="250dp"
-                android:layout_height="250dp"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
                 android:layout_gravity="center|top"
                 android:layout_weight="1"
                 android:scaleType="centerCrop"
@@ -35,13 +37,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/outletNameLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|left"
+                android:layout_gravity="left"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif"
                 android:text="col1"
@@ -52,12 +54,11 @@
                 android:id="@+id/outletItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
+                android:layout_gravity="left"
                 android:layout_weight="1"
                 android:fontFamily="sans-serif"
                 android:text="col1"
-                android:textAlignment="textEnd"
-                android:textSize="24sp"
+                android:textSize="18sp"
                 android:textStyle="normal" />
         </LinearLayout>
 

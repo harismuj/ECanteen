@@ -153,6 +153,8 @@
                             android:layout_height="wrap_content"
                             android:text="Outlet"
                             android:visibility="gone"
+                            android:textSize="23sp"
+                            android:textStyle="bold"
                             android:textAlignment="center"
                             android:textColor="#FFFFFF" />
 
@@ -166,22 +168,14 @@
                             android:textColor="#FFFFFF" />
 
                         <TextView
-                            android:id="@+id/itemTerakhir"
+                            android:id="@+id/total"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
-                            android:text="Item"
+                            android:text="total"
                             android:visibility="gone"
                             android:textColor="#FFFFFF" />
 
-                        <TextView
-                            android:id="@+id/jumlahTerakhir"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:text="Jumlah"
-                            android:visibility="gone"
-                            android:textColor="#FFFFFF" />
                     </LinearLayout>
 
                 </LinearLayout>

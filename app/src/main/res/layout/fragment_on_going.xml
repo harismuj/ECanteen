@@ -4,11 +4,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.OngoingFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="OnGoing Fragment"/>
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="4dp">
 
+        <!-- Judul outlet -->
+        <TextView
+            android:id="@+id/outletTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto"
+            android:text="Sedang Berjalan"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_weight="1">
+
+        <!-- LinearLayout untuk Isi ScrollView -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/onGoingRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:orientation="vertical" />
+
+            <!-- Button -->
+
+        </LinearLayout>
+    </ScrollView>
+    </RelativeLayout>
 </FrameLayout>

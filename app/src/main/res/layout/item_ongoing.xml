@@ -21,7 +21,7 @@
             app:cardCornerRadius="8dp">
 
             <ImageView
-                android:id="@+id/menuImage"
+                android:id="@+id/imageOngoing"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
@@ -30,7 +30,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/menuName"
+            android:id="@+id/namaOutletOngoing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="150dp"
@@ -40,67 +40,26 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/quantity"
+            android:id="@+id/totalOngoing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="150dp"
-            android:layout_marginTop="50dp"
-            android:text="Menu Category"
+            android:layout_marginTop="40dp"
+            android:text="total"
             android:textColor="@color/gray"
-            android:textSize="14sp" />
+            android:textSize="23sp" />
 
         <!-- Add buttons and index number -->
         <TextView
-            android:id="@+id/harga"
+            android:id="@+id/sedangProses"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="150dp"
             android:layout_marginTop="85dp"
-            android:text="Menu Price"
+            android:text="Sedang diproses..."
             android:textSize="18sp"
+            android:textColor="@color/red"
             android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="6dp"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/btnPlus"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/rounded_button"
-                android:gravity="center"
-                android:onClick="onPlusButtonClick"
-                android:padding="8dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/plus" />
-
-            <TextView
-                android:id="@+id/quantityTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="0"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <ImageButton
-                android:id="@+id/btnMinus"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/rounded_button"
-                android:gravity="center"
-                android:onClick="onMinusButtonClick"
-                android:padding="8dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/minus" />
-
-        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 

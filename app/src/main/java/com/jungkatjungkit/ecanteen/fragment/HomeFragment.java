@@ -29,8 +29,11 @@ import com.jungkatjungkit.ecanteen.config.pesanan.OrderResponse;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -73,7 +76,7 @@ public class HomeFragment extends Fragment{
         outletAdapter = new OutletAdapter(new ArrayList<>(), requireContext());
 
         outletListRecyclerView = view.findViewById(R.id.outletList);
-        outletListRecyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 1));
+        outletListRecyclerView.setLayoutManager(new GridLayoutManager(requireContext(), 2));
 
         // Set a custom span size lookup to make items span two rows
         ((GridLayoutManager) outletListRecyclerView.getLayoutManager()).setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
@@ -114,10 +117,10 @@ public class HomeFragment extends Fragment{
 
     private void latestBuy(View view) {
 
-
         // Mendapatkan data dari Intent
         Intent intent = getActivity().getIntent();
         String email = intent.getStringExtra("KEY_EMAIL");
+
         OrderApiService orderApiService = Client.getOrderApiService();
             Log.d("HomeFragment", "email: " + email);
             Call<List<OrderResponse>> call = orderApiService.getLatestOrders(email, 1);
@@ -133,22 +136,25 @@ public class HomeFragment extends Fragment{
                         int fotoOutletResourceId = getResources().getIdentifier(fotoOutletName, "drawable", requireContext().getPackageName());
 
                         ImageView imageTerakhir = view.findViewById(R.id.imageTerakhir);
-                        TextView outletTerakhir, tanggalTerakhir, itemTerakhir, jumlahTerakhir;
+                        TextView outletTerakhir, tanggalTerakhir, total;
                         outletTerakhir = view.findViewById(R.id.outletTerakhir);
                         tanggalTerakhir = view.findViewById(R.id.tanggalTerakhir);
-                        itemTerakhir = view.findViewById(R.id.itemTerakhir);
-                        jumlahTerakhir = view.findViewById(R.id.jumlahTerakhir);
+                        total = view.findViewById(R.id.total);
 
                         outletTerakhir.setVisibility(View.VISIBLE);
                         tanggalTerakhir.setVisibility(View.VISIBLE);
-                        itemTerakhir.setVisibility(View.VISIBLE);
-                        jumlahTerakhir.setVisibility(View.VISIBLE);
+                        total.setVisibility(View.VISIBLE);
                         imageTerakhir.setVisibility(View.VISIBLE);
 
                         outletTerakhir.setText(firstOrder.getNamaOutlet());
                         tanggalTerakhir.setText(DateConverter.convertDateString(String.valueOf(firstOrder.getTanggalPesanan())));
-                        itemTerakhir.setText(firstOrder.getNamaMenu());
-                        jumlahTerakhir.setText((firstOrder.getJumlahPesanan()) + " Pesanan");
+                        //format total menjadi Rupiah
+                        double totalAmount = firstOrder.getTotal();
+                        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
+                        currencyFormat.setCurrency(Currency.getInstance("IDR"));
+                        String formattedTotal = currencyFormat.format(totalAmount);
+
+                        total.setText(formattedTotal);
                         imageTerakhir.setImageResource(fotoOutletResourceId);
 
                     } else {

@@ -135,7 +135,7 @@ import com.jungkatjungkit.ecanteen.fragment.OutletFragment;
 public class OutletActivity extends AppCompatActivity{
 
     private List<MenuResponse> quantityData = new ArrayList<>();
-    Button btnOrder,btnBack;
+    Button btnOrder;
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,15 +143,7 @@ public class OutletActivity extends AppCompatActivity{
         setContentView(R.layout.activity_outlet);
         Intent intent = getIntent();
         btnOrder = findViewById(R.id.orderBtn);
-//        btnBack = findViewById(R.id.btnBack);
-//
-//        btnBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent Back = new Intent(OutletActivity.this, MainActivity.class);
-//                startActivity(Back);
-//            }
-//        });
+
         btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
