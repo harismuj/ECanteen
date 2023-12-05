@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,7 +20,6 @@ import java.util.List;
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
     private List<MenuResponse> menuList;
-    private OnMenuClickListener onMenuClickListener;
     private OnButtonClickListener onButtonClickListener;
 
     public MenuAdapter(List<MenuResponse> menuList, OnButtonClickListener onButtonClickListener) {
@@ -97,8 +97,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
         //quantity
         TextView quantity;
-        Button btnPlus;
-        Button btnMinus;
+        ImageButton btnPlus;
+        ImageButton btnMinus;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -109,20 +109,6 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
             quantity = itemView.findViewById(R.id.quantityTextView);
             btnMinus = itemView.findViewById(R.id.btnMinus);
             btnPlus = itemView.findViewById(R.id.btnPlus);
-
-            // Set the click listener on the itemView
-            btnMinus.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (onButtonClickListener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            onButtonClickListener.onMinusButtonClick(menuList.get(position));
-                            Log.d("MenuAdapter", "Quantity after minus click: " + menuList.get(position).getQuantity());
-                        }
-                    }
-                }
-            });
 
             btnPlus.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -136,18 +122,15 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                     }
                 }
             });
-
             // Set the click listener on the itemView
-            itemView.setOnClickListener(new View.OnClickListener() {
+            btnMinus.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
-                    if (onMenuClickListener != null) {
+                public void onClick(View v) {
+                    if (onButtonClickListener != null) {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION) {
-                            // Get the clicked menu item
-                            MenuResponse clickedMenu = menuList.get(position);
-                            // Trigger the interface method
-                            onMenuClickListener.onMenuClick(clickedMenu);
+                            onButtonClickListener.onMinusButtonClick(menuList.get(position));
+                            Log.d("MenuAdapter", "Quantity after minus click: " + menuList.get(position).getQuantity());
                         }
                     }
                 }
@@ -163,12 +146,8 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
 
-    public interface OnMenuClickListener {
-        void onMenuClick(MenuResponse menu);
-    }
-
     public interface OnButtonClickListener {
-        void onMinusButtonClick(MenuResponse menu);
         void onPlusButtonClick(MenuResponse menu);
+        void onMinusButtonClick(MenuResponse menu);
     }
 }

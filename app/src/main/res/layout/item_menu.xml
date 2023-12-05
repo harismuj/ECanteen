@@ -55,17 +55,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
+            android:layout_marginBottom="6dp"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnPlus"
                 android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:text="+"
-                android:textSize="16sp"
-                android:background="@color/red"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_button"
                 android:gravity="center"
-                android:onClick="onPlusButtonClick"/>
+                android:onClick="onPlusButtonClick"
+                android:padding="8dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/plus" />
 
             <TextView
                 android:id="@+id/quantityTextView"
@@ -75,17 +77,19 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:text="0"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btnMinus"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:text="-"
-                android:textSize="16sp"
-                android:background="@color/red"
+                android:background="@drawable/rounded_button"
                 android:gravity="center"
-                android:onClick="onMinusButtonClick"/>
+                android:onClick="onMinusButtonClick"
+                android:padding="8dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/minus" />
 
         </LinearLayout>
 
