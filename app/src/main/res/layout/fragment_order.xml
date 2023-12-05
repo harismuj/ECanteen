@@ -55,6 +55,15 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
+                <Button
+                    android:id="@+id/orderButton"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Pesan"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="24sp" />
+
             </LinearLayout>
         </ScrollView>
 

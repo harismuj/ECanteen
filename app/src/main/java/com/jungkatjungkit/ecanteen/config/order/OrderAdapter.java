@@ -99,4 +99,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         }
         return filteredList;
     }
+    public List<MenuResponse> getOrderList() {
+        return orderList;
+    }
 }
