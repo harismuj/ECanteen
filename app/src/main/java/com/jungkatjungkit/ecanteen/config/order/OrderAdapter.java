@@ -34,7 +34,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MenuResponse menu = orderList.get(position);
-        totalOrderPrice += menu.getHargaAsInt();
+        totalOrderPrice += menu.getHarga();
         // Bind data to ViewHolder
         holder.menuName.setText(menu.getNamaMenu());
         holder.quantity.setText("Jumlah: " + menu.getQuantity());
@@ -78,7 +78,16 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     public void updateData(List<MenuResponse> newOrderList) {
         orderList.clear();
         orderList.addAll(newOrderList);
+        totalOrderPrice = calculateTotalOrderPrice(); // Recalculate total price
         notifyDataSetChanged();
+    }
+
+    private int calculateTotalOrderPrice() {
+        int totalPrice = 0;
+        for (MenuResponse menu : orderList) {
+            totalPrice += menu.getHarga();
+        }
+        return totalPrice;
     }
 
     private List<MenuResponse> filterOrderList(List<MenuResponse> orderList) {

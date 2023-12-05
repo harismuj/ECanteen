@@ -33,6 +33,7 @@ public class OrderFragment extends Fragment {
     private TextView outletNameTextView;
     private RecyclerView orderRecyclerView;
     private OrderAdapter orderAdapter;
+    private int totalOrderPrice = 0;
     public static OrderFragment newInstance(int outletId, String outletName) {
         OrderFragment fragment = new OrderFragment();
         Bundle args = new Bundle();
@@ -61,8 +62,10 @@ public class OrderFragment extends Fragment {
         orderRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         orderRecyclerView.setAdapter(orderAdapter);
 
-        // Call the method to access quantity data
-        accessQuantityData();
+        accessQuantityData();  // Call accessQuantityData to calculate totalOrderPrice
+
+        TextView totalPriceTextView = view.findViewById(R.id.totalPriceTextView);
+        totalPriceTextView.setText(getString(R.string.total_price, totalOrderPrice));
 
         Bundle args = getArguments();
         Intent intent = getActivity().getIntent();
@@ -85,6 +88,8 @@ public class OrderFragment extends Fragment {
             for (MenuResponse menu : quantityData) {
                 if (menu.getQuantity() > 0) {
                     menusWithQuantity.add(menu);
+                    totalOrderPrice += menu.getHarga();  // Update totalOrderPrice
+                    Log.d("OrderFragment", "Updated totalOrderPrice: " + totalOrderPrice);
                 }
             }
 

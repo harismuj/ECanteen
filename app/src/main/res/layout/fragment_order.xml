@@ -45,7 +45,15 @@
                     android:layout_marginEnd="20dp"
                     android:orientation="vertical" />
 
-                <!-- Button -->
+                <TextView
+                    android:id="@+id/totalPriceTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:padding="8dp"
+                    android:text="Total Harga: Rp. 0"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </ScrollView>
