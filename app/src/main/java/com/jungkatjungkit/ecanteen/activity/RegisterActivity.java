@@ -80,9 +80,11 @@ public class RegisterActivity extends AppCompatActivity {
 
                         if (result != null && result.equals("Registration successful. You can now log in.")) {
                             // Registration berhasil, buka MainActivity
+
                             Intent mvMain = new Intent(RegisterActivity.this, MainActivity.class);
-                            startActivity(mvMain);
+                            mvMain.putExtra("KEY_EMAIL",email);
                             finish(); // Sebaiknya tutup RegisterActivity setelah registrasi berhasil
+                            startActivity(mvMain);
                         } else {
                             // Registrasi gagal, tampilkan pesan kesalahan
                             Toast.makeText(RegisterActivity.this, "Registrasi gagal, cek data Anda", Toast.LENGTH_SHORT).show();

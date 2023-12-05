@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.jungkatjungkit.ecanteen.fragment.HomeFragment;
+import com.jungkatjungkit.ecanteen.fragment.PesananFragment;
 import com.jungkatjungkit.ecanteen.fragment.ProfileFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,8 +49,29 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             } else if (item.getItemId() == R.id.navigation_order) {
-                // Ganti dengan fragment order jika diperlukan
-                // selectedFragment = new OrderFragment();
+                // Menerima data dari LoginActivity
+                String value = intent.getStringExtra("KEY_EMAIL");
+
+                // Cek apakah sudah berada di HomeFragment
+                Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+
+                if (currentFragment == null || !(currentFragment instanceof PesananFragment)) {
+                    // Jika belum berada di HomeFragment, lakukan transaksi
+                    PesananFragment fragment = new PesananFragment();
+
+                    // Membuat Bundle dan menaruh data di dalamnya
+                    Bundle bundle = new Bundle();
+                    bundle.putString("KEY_EMAIL", value);
+                    fragment.setArguments(bundle);
+
+                    // Kirim data ke HomeFragment
+                    selectedFragment = fragment;
+                } else {
+                    // Jika sudah berada di HomeFragment, tidak perlu lakukan apa-apa
+                    // atau bisa menambahkan log atau pesan jika diperlukan
+                    // Log.d("MainActivity", "Sudah berada di HomeFragment");
+                }
+
 
             } else if (item.getItemId() == R.id.navigation_profile) {
                 // Menerima data dari LoginActivity
