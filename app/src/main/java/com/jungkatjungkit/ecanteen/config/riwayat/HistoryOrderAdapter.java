@@ -1,4 +1,4 @@
-package com.jungkatjungkit.ecanteen.config.pesanan;
+package com.jungkatjungkit.ecanteen.config.riwayat;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.jungkatjungkit.ecanteen.config.pesanan;
+package com.jungkatjungkit.ecanteen.config.riwayat;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,8 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jungkatjungkit.ecanteen.R;
-import com.jungkatjungkit.ecanteen.config.DateConverter;
-import com.jungkatjungkit.ecanteen.config.pesanan.OrderResponse;
 
 import java.text.NumberFormat;
 import java.util.Currency;

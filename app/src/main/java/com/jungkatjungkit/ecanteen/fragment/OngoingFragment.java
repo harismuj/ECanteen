@@ -6,24 +6,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jungkatjungkit.ecanteen.R;
-import com.jungkatjungkit.ecanteen.config.DateConverter;
-import com.jungkatjungkit.ecanteen.config.pesanan.Client;
-import com.jungkatjungkit.ecanteen.config.pesanan.OngoingOrderAdapter;
-import com.jungkatjungkit.ecanteen.config.pesanan.OrderApiService;
-import com.jungkatjungkit.ecanteen.config.pesanan.OrderResponse;
+import com.jungkatjungkit.ecanteen.config.riwayat.Client;
+import com.jungkatjungkit.ecanteen.config.riwayat.OngoingOrderAdapter;
+import com.jungkatjungkit.ecanteen.config.riwayat.OrderApiService;
+import com.jungkatjungkit.ecanteen.config.riwayat.OrderResponse;
 
-import java.text.NumberFormat;
-import java.util.Currency;
 import java.util.List;
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;

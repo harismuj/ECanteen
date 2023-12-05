@@ -12,10 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.jungkatjungkit.ecanteen.R;
-import com.jungkatjungkit.ecanteen.config.pesanan.Client;
-import com.jungkatjungkit.ecanteen.config.pesanan.HistoryOrderAdapter;
-import com.jungkatjungkit.ecanteen.config.pesanan.OrderApiService;
-import com.jungkatjungkit.ecanteen.config.pesanan.OrderResponse;
+import com.jungkatjungkit.ecanteen.config.riwayat.Client;
+import com.jungkatjungkit.ecanteen.config.riwayat.HistoryOrderAdapter;
+import com.jungkatjungkit.ecanteen.config.riwayat.OrderApiService;
+import com.jungkatjungkit.ecanteen.config.riwayat.OrderResponse;
 
 import java.util.List;
 

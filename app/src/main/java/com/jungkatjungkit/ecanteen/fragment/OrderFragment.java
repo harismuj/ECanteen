@@ -25,9 +25,12 @@ import com.jungkatjungkit.ecanteen.config.order.OrderAdapter;
 import com.jungkatjungkit.ecanteen.config.order.OrderItem;
 import com.jungkatjungkit.ecanteen.config.order.OrderRequest;
 import com.jungkatjungkit.ecanteen.config.order.OrderApiService;
+import com.jungkatjungkit.ecanteen.config.order.ResponseOrder;
+import com.jungkatjungkit.ecanteen.config.user.ApiResponse;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -150,7 +153,7 @@ public class OrderFragment extends Fragment {
             }
 
             // Create the main OrderRequest
-            return new OrderRequest(userId, catatan, orderItems, totalHarga);
+            return new OrderRequest(userId, catatan, "123", totalHarga);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -160,10 +163,10 @@ public class OrderFragment extends Fragment {
     }
 
     private void postOrder(OrderRequest orderRequest) {
-        Log.d("", apiURL.url());
+        Log.d("", apiURL.url()+"outlet/order");
         // Inisialisasi Retrofit
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(apiURL.url()) // Adjust the base URL
+                .baseUrl("http://101.50.2.14:13000/api/") // Adjust the base URL
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -171,15 +174,22 @@ public class OrderFragment extends Fragment {
         OrderApiService orderApiService = retrofit.create(OrderApiService.class);
 
         // Panggil metode postOrder dari orderApiService
-        Call<Void> call = orderApiService.postOrder(orderRequest);
+        Call<ResponseOrder> call = orderApiService.postOrder(orderRequest);
 
         // Proses permintaan
-        call.enqueue(new Callback<Void>() {
+        call.enqueue(new Callback<ResponseOrder>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<ResponseOrder> call, Response<ResponseOrder> response) {
                 if (response.isSuccessful()) {
-                    // Handle successful response
-                    Toast.makeText(getContext(), "Order berhasil dikirim", Toast.LENGTH_SHORT).show();
+                    ResponseOrder orderResponse = response.body();
+                    if (orderResponse != null && "Pemesanan Sukses".equals(orderResponse.getResult())) {
+                        // Handle successful response
+                        Toast.makeText(getContext(), "Order berhasil dikirim", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Handle unexpected response
+                        Log.e("OrderFragment", "Unexpected response body");
+                        Toast.makeText(getContext(), "Respon tidak sesuai yang diharapkan", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     // Handle unsuccessful response
                     Log.e("OrderFragment", "Error: " + response.message());
@@ -188,11 +198,12 @@ public class OrderFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<ResponseOrder> call, Throwable t) {
                 // Handle failure
                 Log.e("OrderFragment", "Failed to make API call", t);
                 Toast.makeText(getContext(), "Gagal mengirim order. Periksa koneksi internet Anda", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }

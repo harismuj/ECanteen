@@ -1,4 +1,4 @@
-package com.jungkatjungkit.ecanteen.config.pesanan;
+package com.jungkatjungkit.ecanteen.config.riwayat;
 
 import java.util.List;
 

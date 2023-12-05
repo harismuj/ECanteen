@@ -23,9 +23,9 @@ import com.jungkatjungkit.ecanteen.config.apiURL;
 import com.jungkatjungkit.ecanteen.config.outlet.GetOutlet;
 import com.jungkatjungkit.ecanteen.config.outlet.OutletAdapter;
 import com.jungkatjungkit.ecanteen.config.outlet.OutletData;
-import com.jungkatjungkit.ecanteen.config.pesanan.Client;
-import com.jungkatjungkit.ecanteen.config.pesanan.OrderApiService;
-import com.jungkatjungkit.ecanteen.config.pesanan.OrderResponse;
+import com.jungkatjungkit.ecanteen.config.riwayat.Client;
+import com.jungkatjungkit.ecanteen.config.riwayat.OrderApiService;
+import com.jungkatjungkit.ecanteen.config.riwayat.OrderResponse;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 
