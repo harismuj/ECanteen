@@ -132,13 +132,9 @@ import com.jungkatjungkit.ecanteen.R;
 import com.jungkatjungkit.ecanteen.fragment.OrderFragment;
 import com.jungkatjungkit.ecanteen.fragment.OutletFragment;
 
+public class OutletActivity extends AppCompatActivity{
 
-
-
-
-
-
-public class OutletActivity extends AppCompatActivity {
+    private List<MenuResponse> quantityData = new ArrayList<>();
     Button btnOrder,btnBack;
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
@@ -165,7 +161,7 @@ public class OutletActivity extends AppCompatActivity {
                     String outletName = getIntent().getStringExtra("OUTLET_NAME");
 
                     // Create an instance of OrderFragment with the necessary data
-                    OrderFragment orderFragment = OrderFragment.newInstance(String.valueOf(outletId), outletName);
+                    OrderFragment orderFragment = OrderFragment.newInstance(outletId, outletName);
 
                     // Check if the fragment is added to the activity
                     if (orderFragment.isAdded()) {
@@ -202,5 +198,22 @@ public class OutletActivity extends AppCompatActivity {
 
 
     }
+    public interface OnOrderClickListener {
+        void onOrderClick(List<MenuResponse> selectedMenuItems);
+    }
 
+    public void updateQuantity(MenuResponse menu) {
+        // Check if the menu is already in the list
+        if (quantityData.contains(menu)) {
+            // Update the quantity
+            int index = quantityData.indexOf(menu);
+            quantityData.set(index, menu);
+        } else {
+            // Add the menu to the list if not present
+            quantityData.add(menu);
+        }
+    }
+    public List<MenuResponse> getQuantityData() {
+        return quantityData;
+    }
 }

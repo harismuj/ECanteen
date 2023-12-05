@@ -1,11 +1,9 @@
 package com.jungkatjungkit.ecanteen.config.menu;
 
-import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -103,7 +101,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             menuName = itemView.findViewById(R.id.menuName);
-            menuKategori = itemView.findViewById(R.id.menuKategori);
+            menuKategori = itemView.findViewById(R.id.quantity);
             harga = itemView.findViewById(R.id.harga);
             foto = itemView.findViewById(R.id.menuImage);
             quantity = itemView.findViewById(R.id.quantityTextView);

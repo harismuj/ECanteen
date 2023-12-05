@@ -1,20 +1,21 @@
 package com.jungkatjungkit.ecanteen.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.jungkatjungkit.ecanteen.R;
+import com.jungkatjungkit.ecanteen.activity.OutletActivity;
 import com.jungkatjungkit.ecanteen.config.menu.Menu;
 import com.jungkatjungkit.ecanteen.config.menu.MenuAdapter;
 import com.jungkatjungkit.ecanteen.config.menu.MenuApiService;
@@ -30,6 +31,7 @@ import retrofit2.Response;
 public class OutletFragment extends Fragment implements MenuAdapter.OnButtonClickListener  {
     private TextView outletNameTextView;
     private RecyclerView menuRecyclerView;
+    private OutletActivity.OnOrderClickListener onOrderClickListener;
     private MenuAdapter menuAdapter;
 
 
@@ -118,6 +120,10 @@ public class OutletFragment extends Fragment implements MenuAdapter.OnButtonClic
         }
         // Notify the adapter that the data has changed
         menuAdapter.notifyDataSetChanged();
+
+        if (getActivity() instanceof OutletActivity) {
+            ((OutletActivity) getActivity()).updateQuantity(menu);
+        }
     }
 
     @Override
@@ -127,5 +133,21 @@ public class OutletFragment extends Fragment implements MenuAdapter.OnButtonClic
         menu.setQuantity(currentQuantity + 1);
         // Notify the adapter that the data has changed
         menuAdapter.notifyDataSetChanged();
+
+        if (getActivity() instanceof OutletActivity) {
+            ((OutletActivity) getActivity()).updateQuantity(menu);
+        }
     }
+//
+//    @Override
+//    public void onAttach(@NonNull Context context) {
+//        super.onAttach(context);
+//        if (context instanceof MenuAdapter.OnButtonClickListener) {
+//            // The hosting activity (OutletActivity) should implement OnButtonClickListener
+//            // This ensures that the communication between fragment and activity is possible
+//            menuAdapter.setOnButtonClickListener(this);
+//        } else {
+//            throw new ClassCastException(context.toString() + " must implement OnButtonClickListener");
+//        }
+//    }
 }

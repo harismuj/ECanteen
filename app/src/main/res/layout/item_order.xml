@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- item_menu.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -36,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
             android:layout_marginTop="50dp"
-            android:text="Menu Category"
+            android:text="Quantity"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -46,52 +45,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="160dp"
             android:layout_marginTop="90dp"
-            android:text="Menu Price"
+            android:text="harga"
             android:textSize="16sp"
             android:textStyle="bold" />
-
-        <!-- Add buttons and index number -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="6dp"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/btnPlus"
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/rounded_button"
-                android:gravity="center"
-                android:onClick="onPlusButtonClick"
-                android:padding="8dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/plus" />
-
-            <TextView
-                android:id="@+id/quantityTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="0"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <ImageButton
-                android:id="@+id/btnMinus"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/rounded_button"
-                android:gravity="center"
-                android:onClick="onMinusButtonClick"
-                android:padding="8dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/minus" />
-
-        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
