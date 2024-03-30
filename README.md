@@ -19,7 +19,7 @@ E-Canteen adalah sebuah aplikasi Android yang memungkinkan pengguna untuk memesa
 1. Clone repository ini ke lokal Anda.
 2. Buka proyek menggunakan Android Studio.
 3. Tunggu hingga proses sinkronisasi Gradle selesai.
-4. Pastikan Anda memiliki backend yang terhubung dengan aplikasi ini. (Isi URL backend Anda di file `ApiService.java`.)
+4. Pastikan Anda memiliki backend yang terhubung dengan aplikasi ini.
 5. Jalankan aplikasi menggunakan emulator atau perangkat Android yang terhubung.
 6. Jelajahi fitur-fitur yang tersedia dan nikmati pengalaman menggunakan E-Canteen!
 
