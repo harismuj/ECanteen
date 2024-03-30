@@ -7,7 +7,7 @@ E-Canteen adalah sebuah aplikasi Android yang memungkinkan pengguna untuk memesa
 - **Pemesanan Makanan:** Pengguna dapat melihat daftar makanan yang tersedia dari kantin yang terdaftar dan memesan makanan yang mereka inginkan.
 - **Pencarian Kantin:** Pengguna dapat mencari kantin berdasarkan lokasi atau nama, memudahkan mereka untuk menemukan kantin terdekat atau favorit mereka.
 - **Keranjang Belanja:** Pengguna dapat menambahkan makanan ke keranjang belanja mereka, melihat ringkasan pesanan, dan mengubah jumlah atau menghapus makanan.
-- **History Pesanan:** Pengguna dapat melihat riwayat pesanan mereka, termasuk detail pesanan dan status pengiriman.
+- **Riwayat Pesanan:** Pengguna dapat melihat riwayat pesanan mereka, termasuk detail pesanan dan status pengiriman.
 
 ## Pengembangan Sistem
 
