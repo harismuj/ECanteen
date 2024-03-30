@@ -1,3 +1,5 @@
+![Uploading image.png…]()
+
 # E-Canteen
 
 E-Canteen adalah sebuah aplikasi Android yang memungkinkan pengguna untuk memesan makanan secara online dari berbagai kantin di sekitar mereka. Aplikasi ini dibangun menggunakan Java di Android Studio dengan Retrofit untuk berkomunikasi dengan backend.
